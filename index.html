@@ -3,22 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iacopo Sabbatini — Desenvolvedor Full Stack</title>
+<title>Iacopo Sabbatini | Desenvolvedor Full Stack</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23070911'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-weight='700' font-size='16' fill='%233ee6ff' text-anchor='middle'%3EIS%3C/text%3E%3C/svg%3E">
 <style>
   :root{
-    --ink:#10121a;
-    --panel:#171b28;
-    --panel-2:#1d2233;
-    --chalk:#f2eee3;
-    --mist:#8b91a6;
-    --thread:#c9463a;
-    --thread-dim:#7d3129;
-    --brass:#c19a5b;
-    --line:rgba(242,238,227,0.12);
-    --line-strong:rgba(242,238,227,0.22);
+    --ink:#05060b;
+    --ink-2:#0a0d17;
+    --panel:#10131f;
+    --panel-2:#141a2b;
+    --chalk:#edf1fa;
+    --mist:#7c86a3;
+    --neon:#3ee6ff;
+    --neon-dim:#1c5a68;
+    --neon-2:#a06bff;
+    --neon-2-dim:#4a3480;
+    --line:rgba(237,241,250,0.08);
+    --line-strong:rgba(237,241,250,0.18);
+    --shadow:0 20px 50px -20px rgba(0,0,0,0.7);
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -26,15 +30,30 @@
   html{scroll-behavior:smooth;}
 
   body{
-    background:var(--ink);
+    background:
+      radial-gradient(ellipse 900px 560px at 14% -6%, rgba(62,230,255,0.09), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 92% 14%, rgba(160,107,255,0.09), transparent 55%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+    background-attachment:fixed;
     color:var(--chalk);
     font-family:'Inter',sans-serif;
     font-weight:400;
-    line-height:1.6;
+    line-height:1.65;
     overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
   }
 
-  ::selection{background:var(--thread);color:var(--chalk);}
+  ::selection{background:var(--neon);color:var(--ink);}
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    opacity:0.03;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 
   a{color:inherit;}
 
@@ -48,7 +67,7 @@
     font-size:0.72rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
-    color:var(--brass);
+    color:var(--neon);
     display:flex;
     align-items:center;
     gap:0.6rem;
@@ -58,8 +77,9 @@
     content:"";
     width:18px;
     height:1px;
-    background:var(--thread);
+    background:var(--neon-2);
     display:inline-block;
+    box-shadow:0 0 6px rgba(160,107,255,0.7);
   }
 
   /* ---------- layout shell ---------- */
@@ -72,11 +92,11 @@
 
   section{
     position:relative;
-    padding:120px 0;
+    padding:130px 0;
   }
 
   .seam{
-    border-top:2px dashed var(--line-strong);
+    border-top:1px dashed var(--line-strong);
     position:relative;
   }
 
@@ -102,33 +122,49 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:22px 32px;
-    mix-blend-mode:difference;
+    padding:20px 32px;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    background:linear-gradient(rgba(5,6,11,0.6), rgba(5,6,11,0));
   }
 
   nav .mark{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    font-size:1.05rem;
-    letter-spacing:0.02em;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.1rem;
+    letter-spacing:0.01em;
+    color:var(--chalk);
   }
+  nav .mark span{color:var(--neon);text-shadow:0 0 12px rgba(62,230,255,0.6);}
 
   nav ul{
     list-style:none;
     display:flex;
-    gap:28px;
+    gap:32px;
   }
 
   nav a{
+    position:relative;
     font-family:'IBM Plex Mono',monospace;
-    font-size:0.72rem;
+    font-size:0.7rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
     text-decoration:none;
-    opacity:0.75;
-    transition:opacity 0.25s ease;
+    color:var(--mist);
+    transition:color 0.25s ease;
+    padding-bottom:3px;
   }
-  nav a:hover{opacity:1;}
+  nav a::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--neon);
+    box-shadow:0 0 6px rgba(62,230,255,0.8);
+    transition:width 0.25s ease;
+  }
+  nav a:hover{color:var(--chalk);}
+  nav a:hover::after{width:100%;}
 
   @media(max-width:640px){
     nav ul{gap:16px;}
@@ -152,11 +188,59 @@
     z-index:1;
   }
 
+  .hero-glow{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse 620px 460px at 50% 46%, rgba(62,230,255,0.14), transparent 65%),
+      radial-gradient(ellipse 420px 380px at 62% 40%, rgba(160,107,255,0.13), transparent 60%);
+    mix-blend-mode:screen;
+    animation:glow-pulse 6s ease-in-out infinite;
+  }
+  @keyframes glow-pulse{
+    0%,100%{opacity:0.7;}
+    50%{opacity:1;}
+  }
+
+  /* HUD scanlines, confined to hero */
+  .hero-scan{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    opacity:0.25;
+    background:repeating-linear-gradient(
+      0deg,
+      rgba(237,241,250,0.05) 0px,
+      rgba(237,241,250,0.05) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+
+  /* HUD corner brackets */
+  .hud-corner{
+    position:absolute;
+    z-index:3;
+    width:26px;height:26px;
+    border-color:var(--neon);
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .hud-corner.tl{top:100px;left:24px;border-top:2px solid;border-left:2px solid;}
+  .hud-corner.tr{top:100px;right:24px;border-top:2px solid;border-right:2px solid;}
+  .hud-corner.bl{bottom:24px;left:24px;border-bottom:2px solid;border-left:2px solid;}
+  .hud-corner.br{bottom:24px;right:24px;border-bottom:2px solid;border-right:2px solid;}
+
   .hero-fade{
     position:absolute;
     inset:0;
     z-index:2;
-    background:radial-gradient(ellipse at 30% 30%, transparent 0%, rgba(16,18,26,0.15) 55%, var(--ink) 92%);
+    background:
+      radial-gradient(ellipse at 26% 34%, transparent 0%, rgba(5,6,11,0.1) 45%, var(--ink) 88%),
+      linear-gradient(180deg, transparent 60%, var(--ink) 100%);
     pointer-events:none;
   }
 
@@ -166,23 +250,24 @@
     width:100%;
   }
 
-  .hero-content .eyebrow{margin-bottom:22px;}
+  .hero-content .eyebrow{margin-bottom:24px;}
 
   .hero h1{
-    font-family:'Fraunces',serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(2.6rem, 8vw, 6.4rem);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(2.7rem, 8vw, 6.4rem);
     line-height:0.98;
-    letter-spacing:-0.01em;
+    letter-spacing:-0.02em;
     max-width:11ch;
+    text-shadow:0 0 44px rgba(62,230,255,0.16), 0 8px 40px rgba(0,0,0,0.4);
   }
 
   .hero p.sub{
-    margin-top:26px;
-    max-width:46ch;
+    margin-top:28px;
+    max-width:44ch;
     color:var(--mist);
-    font-size:1.05rem;
+    font-size:1.08rem;
+    line-height:1.7;
   }
 
   .scroll-cue{
@@ -198,7 +283,7 @@
   }
   .scroll-cue .line{
     width:1px;height:26px;
-    background:linear-gradient(var(--thread),transparent);
+    background:linear-gradient(var(--neon),transparent);
     animation:pulse-line 2.2s ease-in-out infinite;
   }
   @keyframes pulse-line{
@@ -206,39 +291,43 @@
     50%{opacity:1;}
   }
 
-  /* node tags */
+  /* node tags — HUD-style skill callouts */
   .node{
     position:absolute;
     z-index:4;
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:0;
     transform:translate(-50%,-50%);
     pointer-events:auto;
     white-space:nowrap;
   }
   .node .dot{
-    width:7px;height:7px;
+    width:6px;height:6px;
     border-radius:50%;
-    background:var(--brass);
-    box-shadow:0 0 0 3px rgba(193,154,91,0.15);
+    background:var(--neon-2);
+    box-shadow:0 0 0 4px rgba(160,107,255,0.14), 0 0 10px rgba(160,107,255,0.6);
     flex-shrink:0;
-    transition:transform 0.2s ease, background 0.2s ease;
+    transition:transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   }
   .node .tag{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.68rem;
-    letter-spacing:0.05em;
+    letter-spacing:0.04em;
     color:var(--chalk);
-    background:rgba(23,27,40,0.9);
+    background:rgba(10,13,23,0.92);
+    backdrop-filter:blur(4px);
     border:1px solid var(--line-strong);
-    padding:3px 8px;
-    border-radius:2px;
+    border-left:2px solid var(--neon);
+    padding:4px 10px 4px 9px;
+    border-radius:0 3px 3px 0;
+    margin-left:9px;
+    box-shadow:var(--shadow);
     opacity:0;
-    transform:translateX(-4px);
+    transform:translateX(-6px);
     transition:opacity 0.2s ease, transform 0.2s ease;
   }
-  .node:hover .dot{background:var(--thread);transform:scale(1.4);}
+  .node:hover .dot{background:var(--neon);transform:scale(1.5);box-shadow:0 0 0 4px rgba(62,230,255,0.2), 0 0 14px rgba(62,230,255,0.7);}
   .node:hover .tag{opacity:1;transform:translateX(0);}
 
   /* ---------- reveal ---------- */
@@ -263,7 +352,7 @@
   }
 
   .about-grid p{
-    font-size:1.08rem;
+    font-size:1.1rem;
     color:var(--chalk);
     max-width:52ch;
   }
@@ -272,15 +361,26 @@
   .about-figures{
     display:flex;
     flex-direction:column;
-    gap:22px;
+    gap:26px;
     border-left:1px solid var(--line);
-    padding-left:28px;
+    padding-left:30px;
+  }
+  .fig{position:relative;}
+  .fig::before{
+    content:"";
+    position:absolute;
+    left:-31px;top:6px;
+    width:5px;height:5px;
+    border-radius:50%;
+    background:var(--neon);
+    box-shadow:0 0 8px rgba(62,230,255,0.8);
   }
   .fig .num{
-    font-family:'Fraunces',serif;
-    font-style:italic;
-    font-size:1.9rem;
-    color:var(--brass);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:2.1rem;
+    color:var(--neon-2);
+    line-height:1.1;
   }
   .fig .lbl{
     font-family:'IBM Plex Mono',monospace;
@@ -288,7 +388,7 @@
     letter-spacing:0.08em;
     text-transform:uppercase;
     color:var(--mist);
-    margin-top:2px;
+    margin-top:4px;
   }
 
   @media(max-width:760px){
@@ -323,23 +423,30 @@
   .chip{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.78rem;
-    padding:7px 13px;
+    padding:8px 14px;
     border:1px solid var(--line-strong);
-    border-radius:2px;
+    border-radius:3px;
     color:var(--chalk);
+    background:rgba(16,19,31,0.5);
     position:relative;
-    transition:border-color 0.2s ease, color 0.2s ease;
+    transition:border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
   .chip::before{
     content:"";
     position:absolute;
     left:0;top:0;bottom:0;
     width:3px;
-    background:var(--thread-dim);
+    border-radius:3px 0 0 3px;
+    background:var(--neon-dim);
     transition:background 0.2s ease;
   }
-  .chip:hover{border-color:var(--brass);color:var(--brass);}
-  .chip:hover::before{background:var(--thread);}
+  .chip:hover{
+    border-color:var(--neon);
+    color:var(--neon);
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px -12px rgba(0,0,0,0.6), 0 0 16px -4px rgba(62,230,255,0.35);
+  }
+  .chip:hover::before{background:var(--neon);}
 
   @media(max-width:640px){
     .stack-cats{grid-template-columns:1fr;}
@@ -349,13 +456,16 @@
 
   .project-card{
     margin-top:44px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:4px;
+    background:linear-gradient(160deg, var(--panel), var(--panel-2));
+    border:1px solid var(--line-strong);
+    border-radius:8px;
     overflow:hidden;
     display:grid;
     grid-template-columns:1.1fr 0.9fr;
+    box-shadow:var(--shadow);
+    transition:border-color 0.3s ease;
   }
+  .project-card:hover{border-color:rgba(62,230,255,0.35);}
 
   .project-body{
     padding:44px;
@@ -369,18 +479,18 @@
     font-size:0.68rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:#8fbf8a;
+    color:#7ee08a;
     margin-bottom:18px;
   }
   .project-status .pip{
     width:6px;height:6px;border-radius:50%;
-    background:#8fbf8a;
-    box-shadow:0 0 0 3px rgba(143,191,138,0.15);
+    background:#7ee08a;
+    box-shadow:0 0 0 3px rgba(126,224,138,0.15), 0 0 8px rgba(126,224,138,0.7);
   }
 
   .project-body h3{
-    font-family:'Fraunces',serif;
-    font-weight:600;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
     font-size:2rem;
     margin-bottom:6px;
   }
@@ -412,8 +522,12 @@
     color:var(--chalk);
   }
   .feat-list li::before{
-    content:"—";
-    color:var(--thread);
+    content:"";
+    width:5px;height:5px;
+    border-radius:50%;
+    background:var(--neon);
+    box-shadow:0 0 6px rgba(62,230,255,0.7);
+    margin-top:8px;
     flex-shrink:0;
   }
 
@@ -443,18 +557,19 @@
     text-decoration:none;
     color:var(--ink);
     background:var(--chalk);
-    padding:12px 20px;
-    border-radius:2px;
-    transition:background 0.2s ease, transform 0.2s ease;
+    padding:13px 22px;
+    border-radius:3px;
+    box-shadow:0 12px 28px -14px rgba(0,0,0,0.6);
+    transition:background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .btn:hover{background:var(--brass);transform:translateY(-1px);}
+  .btn:hover{background:var(--neon);transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(0,0,0,0.7), 0 0 22px -4px rgba(62,230,255,0.5);}
   .btn svg{width:13px;height:13px;}
 
   .project-visual{
     background:
       linear-gradient(var(--panel-2),var(--panel-2)),
-      repeating-linear-gradient(0deg, rgba(242,238,227,0.05) 0 1px, transparent 1px 28px),
-      repeating-linear-gradient(90deg, rgba(242,238,227,0.05) 0 1px, transparent 1px 28px);
+      repeating-linear-gradient(0deg, rgba(237,241,250,0.05) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgba(237,241,250,0.05) 0 1px, transparent 1px 28px);
     border-left:1px solid var(--line);
     padding:32px 28px;
     font-family:'IBM Plex Mono',monospace;
@@ -474,8 +589,8 @@
   }
 
   .project-visual .line{padding:2px 0;white-space:pre;}
-  .project-visual .k{color:var(--brass);}
-  .project-visual .s{color:var(--thread);}
+  .project-visual .k{color:var(--neon-2);}
+  .project-visual .s{color:var(--neon);}
   .project-visual .c{color:var(--chalk);}
 
   @media(max-width:800px){
@@ -496,39 +611,39 @@
   }
 
   .contact h2{
-    font-family:'Fraunces',serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(1.9rem,4.5vw,3.2rem);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(2rem,4.5vw,3.4rem);
     max-width:14ch;
-    line-height:1.08;
+    line-height:1.1;
   }
 
   .contact-links{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:16px;
   }
 
   .contact-links a{
     font-family:'IBM Plex Mono',monospace;
-    font-size:0.92rem;
+    font-size:0.94rem;
     text-decoration:none;
-    padding-bottom:4px;
+    padding-bottom:5px;
     border-bottom:1px solid var(--line-strong);
     transition:border-color 0.2s ease, color 0.2s ease;
     width:fit-content;
   }
-  .contact-links a:hover{color:var(--brass);border-color:var(--brass);}
+  .contact-links a:hover{color:var(--neon);border-color:var(--neon);}
 
   footer{
-    padding:32px 0 48px;
+    padding:36px 0 56px;
     text-align:center;
+    border-top:1px solid var(--line);
   }
   footer p{
     font-family:'IBM Plex Mono',monospace;
-    font-size:0.7rem;
-    letter-spacing:0.08em;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
     color:var(--mist);
     text-transform:uppercase;
   }
@@ -536,6 +651,7 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     .scroll-cue .line{animation:none;}
+    .hero-glow{animation:none;}
     .reveal{transition:none;opacity:1;transform:none;}
   }
 </style>
@@ -543,7 +659,7 @@
 <body>
 
 <nav>
-  <span class="mark">IS.</span>
+  <span class="mark">Iacopo<span>.</span></span>
   <ul>
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#stack">Stack</a></li>
@@ -554,12 +670,18 @@
 
 <header class="hero">
   <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-scan"></div>
   <div id="node-layer"></div>
+  <span class="hud-corner tl"></span>
+  <span class="hud-corner tr"></span>
+  <span class="hud-corner bl"></span>
+  <span class="hud-corner br"></span>
   <div class="hero-fade"></div>
   <div class="wrap hero-content">
     <p class="eyebrow">Desenvolvedor Full Stack</p>
     <h1>Iacopo<br>Sabbatini</h1>
-    <p class="sub">Costuro back-end e front-end no mesmo ponto — Java, bancos de dados e interfaces que funcionam de verdade, da mesma forma que se monta uma peça: molde, corte e acabamento.</p>
+    <p class="sub">Trabalho com Java, bancos de dados e interfaces web, unindo back-end e front-end no mesmo projeto. Gosto de pensar cada sistema como uma peça bem construída: primeiro o molde, depois o corte, depois o acabamento.</p>
   </div>
   <div class="scroll-cue mono">
     <span class="line"></span>
@@ -573,8 +695,8 @@
     <p class="eyebrow reveal">Sobre</p>
     <div class="about-grid">
       <div class="reveal">
-        <p>Comecei programando peça por peça — como quem risca um molde antes de montar a roupa inteira. Hoje transito por todas as camadas de um sistema: modelagem do banco de dados, regras de negócio no back-end e a interface que a pessoa realmente toca na ponta.</p>
-        <p>Meu trabalho mais completo até agora foi construir, do zero, o sistema de gestão de uma loja de moda de verdade — do cadastro ao caixa, do login ao relatório financeiro.</p>
+        <p>Comecei programando peça por peça, aprendendo cada camada antes de montar o sistema inteiro. Hoje trabalho de ponta a ponta: modelagem do banco de dados, regras de negócio no back-end e a interface que a pessoa realmente toca na tela.</p>
+        <p>Meu projeto mais completo até agora foi construir, do zero, o sistema de gestão de uma loja de moda de verdade. Ele cobre desde o cadastro de clientes até o caixa, do login ao relatório financeiro.</p>
       </div>
       <div class="about-figures reveal">
         <div class="fig">
@@ -587,7 +709,7 @@
         </div>
         <div class="fig">
           <div class="num">Full</div>
-          <div class="lbl">Stack — do schema à tela</div>
+          <div class="lbl">Stack completa, do schema à tela</div>
         </div>
       </div>
     </div>
@@ -702,8 +824,10 @@
   var hero = document.querySelector('.hero');
 
   var scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x05060b, 4, 11);
+
   var camera = new THREE.PerspectiveCamera(45, hero.clientWidth / hero.clientHeight, 0.1, 100);
-  camera.position.set(0, 0, 5.4);
+  camera.position.set(0, 0.3, 5.6);
 
   var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -712,40 +836,76 @@
   var rig = new THREE.Group();
   scene.add(rig);
 
-  // parametric torus-knot params (must match geometry below)
-  var P = 2, Q = 3, R = 1.15, TUBE = 0.34;
-  function knotPoint(t){
-    var pt = t * P * Math.PI * 2;
-    var qt = t * Q * Math.PI * 2;
-    var r = R + Math.cos(qt) * 0.5;
-    return new THREE.Vector3(
-      r * Math.cos(pt),
-      r * Math.sin(pt),
-      Math.sin(qt) * 0.5
-    );
-  }
+  // --- icosahedron core, neon wireframe ---
+  var R = 1.15;
+  var coreGeo = new THREE.IcosahedronGeometry(R, 0);
+  var coreWire = new THREE.WireframeGeometry(coreGeo);
+  var coreMat = new THREE.LineBasicMaterial({ color: 0x3ee6ff, transparent: true, opacity: 0.9 });
+  var core = new THREE.LineSegments(coreWire, coreMat);
+  rig.add(core);
 
-  // main thread
-  var knotGeo = new THREE.TorusKnotGeometry(R, TUBE, 160, 10, P, Q);
-  var wireGeo = new THREE.WireframeGeometry(knotGeo);
-  var mat = new THREE.LineBasicMaterial({ color: 0xc9463a, transparent: true, opacity: 0.85 });
-  var knot = new THREE.LineSegments(wireGeo, mat);
-  rig.add(knot);
-
-  // faint echo thread for depth
-  var echoMat = new THREE.LineBasicMaterial({ color: 0x8b91a6, transparent: true, opacity: 0.16 });
-  var echo = new THREE.LineSegments(wireGeo, echoMat);
-  echo.scale.setScalar(1.22);
-  echo.rotation.set(0.4, 0.6, 0);
+  // faint echo core for depth
+  var echoMat = new THREE.LineBasicMaterial({ color: 0xa06bff, transparent: true, opacity: 0.14 });
+  var echo = new THREE.LineSegments(coreWire, echoMat);
+  echo.scale.setScalar(1.16);
   rig.add(echo);
 
-  // skill nodes on the thread
+  // --- orbiting HUD rings ---
+  var ring1Geo = new THREE.TorusGeometry(1.9, 0.006, 8, 96);
+  var ring1Mat = new THREE.LineBasicMaterial({ color: 0x3ee6ff, transparent: true, opacity: 0.55 });
+  var ring1 = new THREE.LineSegments(new THREE.WireframeGeometry(ring1Geo), ring1Mat);
+  ring1.rotation.set(1.3, 0.2, 0);
+  rig.add(ring1);
+
+  var ring2Geo = new THREE.TorusGeometry(2.25, 0.005, 8, 96);
+  var ring2Mat = new THREE.LineBasicMaterial({ color: 0xa06bff, transparent: true, opacity: 0.4 });
+  var ring2 = new THREE.LineSegments(new THREE.WireframeGeometry(ring2Geo), ring2Mat);
+  ring2.rotation.set(0.4, 1.1, 0.3);
+  rig.add(ring2);
+
+  // --- twelve icosahedron vertices (manual, golden ratio) for skill node placement ---
+  var phi = (1 + Math.sqrt(5)) / 2;
+  var rawVerts = [
+    [-1, phi, 0], [1, phi, 0], [-1, -phi, 0], [1, -phi, 0],
+    [0, -1, phi], [0, 1, phi], [0, -1, -phi], [0, 1, -phi],
+    [phi, 0, -1], [phi, 0, 1], [-phi, 0, -1], [-phi, 0, 1]
+  ];
+  var vertPositions = rawVerts.map(function(v){
+    var vec = new THREE.Vector3(v[0], v[1], v[2]).normalize().multiplyScalar(R);
+    return vec;
+  });
+
+  // --- ambient particle field ---
+  function makeDust(count, color, size, opacity, spread){
+    var geo = new THREE.BufferGeometry();
+    var pos = new Float32Array(count * 3);
+    for (var d = 0; d < count; d++){
+      pos[d*3] = (Math.random() - 0.5) * spread;
+      pos[d*3+1] = (Math.random() - 0.5) * spread;
+      pos[d*3+2] = (Math.random() - 0.5) * (spread * 0.6) - 1.5;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    var mat = new THREE.PointsMaterial({ color: color, size: size, transparent: true, opacity: opacity, sizeAttenuation: true });
+    return new THREE.Points(geo, mat);
+  }
+  var dustCyan = makeDust(110, 0x3ee6ff, 0.02, 0.5, 10);
+  var dustViolet = makeDust(70, 0xa06bff, 0.018, 0.4, 11);
+  scene.add(dustCyan);
+  scene.add(dustViolet);
+
+  // --- grid floor, synthwave style, fading via fog ---
+  var grid = new THREE.GridHelper(16, 32, 0x3ee6ff, 0x1c2135);
+  grid.position.y = -1.9;
+  grid.material.transparent = true;
+  grid.material.opacity = 0.16;
+  scene.add(grid);
+
+  // skill nodes on the core vertices
   var skills = ['Java','Spring Boot','MySQL','MongoDB','APIs REST','JavaScript','HTML / CSS','Git & GitHub','NetBeans','Postman'];
   var nodes = skills.map(function(name, i){
-    var t = i / skills.length;
-    var pos = knotPoint(t);
+    var pos = vertPositions[i];
     var geo = new THREE.SphereGeometry(0.045, 12, 12);
-    var m = new THREE.MeshBasicMaterial({ color: 0xc19a5b });
+    var m = new THREE.MeshBasicMaterial({ color: 0xa06bff });
     var mesh = new THREE.Mesh(geo, m);
     mesh.position.copy(pos);
     rig.add(mesh);
@@ -758,7 +918,7 @@
     return { mesh: mesh, el: el };
   });
 
-  rig.rotation.set(0.5, -0.6, 0.15);
+  rig.rotation.set(0.4, -0.6, 0.1);
 
   var mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
   window.addEventListener('mousemove', function(e){
@@ -796,11 +956,15 @@
 
     if (!reduceMotion){
       rig.rotation.y += dt * 0.18;
-      rig.rotation.x += dt * 0.03;
+      rig.rotation.x += dt * 0.025;
+      ring1.rotation.z += dt * 0.12;
+      ring2.rotation.z -= dt * 0.09;
+      dustCyan.rotation.y += dt * 0.01;
+      dustViolet.rotation.y -= dt * 0.008;
       targetX += (mouseX * 0.4 - targetX) * 0.04;
       targetY += (mouseY * 0.4 - targetY) * 0.04;
       camera.position.x = targetX;
-      camera.position.y = -targetY;
+      camera.position.y = 0.3 - targetY;
       camera.lookAt(0, 0, 0);
     }
 
